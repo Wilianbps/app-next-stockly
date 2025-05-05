@@ -6,8 +6,9 @@ import { getProducts } from "../_data_access/product/get-products";
 
 async function ProductsPage() {
 const products = await getProducts();
+/* const response = await fetch("http://localhost:3000/api/products")
+const products = await response.json() */
 
-  //consigo aqui chamar o banco de dados
   return (
     <div className="m-8 w-full space-y-8 bg-white p-8">
       <div className="flex w-full items-center justify-between">
@@ -21,7 +22,7 @@ const products = await getProducts();
           <PlusIcon size={20} /> Novo Produto
         </Button>
       </div>
-      <DataTable columns={productTableColumn} data={products} />
+      <DataTable columns={productTableColumn} data={JSON.parse(JSON.stringify(products))} />
     </div>
   );
 }
