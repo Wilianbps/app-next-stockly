@@ -1,11 +1,11 @@
 import { PlusIcon } from "lucide-react";
 import { Button } from "../_components/ui/button";
-import { db } from "../_lib/prisma";
 import { DataTable } from "../_components/ui/data-table";
 import { productTableColumn } from "./_components/table-columns";
+import { getProducts } from "../_data_access/product/get-products";
 
 async function ProductsPage() {
-  const products = await db.product.findMany({});
+const products = await getProducts();
 
   //consigo aqui chamar o banco de dados
   return (
